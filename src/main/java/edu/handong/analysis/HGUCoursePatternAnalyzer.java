@@ -55,9 +55,16 @@ public class HGUCoursePatternAnalyzer {
 	 */
 	private Student[] initiateStudentArrayFromLines(String[] lines) {
 		
+		Student st;
 		// TODO: implement this method
-		
-		
+		for(String line: lines) {
+			st = new Student(line.trim().split(",")[1]);
+			//콤마를 기준으로 나눌거에요.
+			//그리고 2번째 것만 저장할거에요.
+			//2번째꺼가 뭐냐면 이름이에요.x	
+			Student[]
+
+		}
 		return null;
 	}
 
@@ -70,6 +77,7 @@ public class HGUCoursePatternAnalyzer {
 	private boolean studentExist(Student[] students, Student student) {
 		
 		// TODO: implement this method
+		for()
 
 		return false;
 	}
@@ -82,6 +90,11 @@ public class HGUCoursePatternAnalyzer {
 	private Course[] initiateCourseArrayFromLines(String[] lines) {
 		
 		// TODO: implement this method
+		//while문을 돌려주세요(무한루프) 
+		//지금 들어오는 이름이랑 기존에 있던 이름이 같으면 배열에 넣지말고
+		//지금 들어오는 이름이랑 기존에 있던 이름이 다르면 배열에 넣어줘요
+		//어떻게??
+		//...
 		
 		return null;
 	}
