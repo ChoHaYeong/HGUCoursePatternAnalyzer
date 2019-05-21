@@ -1,11 +1,13 @@
 package edu.handong.analysis;
 
+import java.util.ArrayList;
+
 import edu.handong.analysis.datamodel.Course;
 import edu.handong.analysis.datamodel.Student;
 
 public class HGUCoursePatternAnalyzer {
 	
-	String[] lines = {	"1999-1, JC Nam, Java Programming",
+	private String[] lines = {	"1999-1, JC Nam, Java Programming",
 						"1999-2, JC Nam, Programming Language Theory",
 						"1999-1, JC Nam, Data Structures",
 						"2001-1, JC Nam, Database Systems",
@@ -19,10 +21,10 @@ public class HGUCoursePatternAnalyzer {
 						"2019-1, SJ Kim, Algorithm Analysis",
 						};
 
-	int numOfStudents;
-	int numOfCourses;
-	Student[] students;
-	Course[] courses;
+	private int numOfStudents;
+	private int numOfCourses;
+	private ArrayList<Student> students;
+	private ArrayList<Course> courses;
 	
 	/**
 	 * This method runs our analysis logic to get the list of student and course names from lines.
@@ -53,19 +55,18 @@ public class HGUCoursePatternAnalyzer {
 	 * @param lines
 	 * @return
 	 */
-	private Student[] initiateStudentArrayFromLines(String[] lines) {
+	private ArrayList<Student> initiateStudentArrayFromLines(String[] lines) {
 		
-		Student st;
-		// TODO: implement this method
-		for(String line: lines) {
-			st = new Student(line.trim().split(",")[1]);
-			//콤마를 기준으로 나눌거에요.
-			//그리고 2번째 것만 저장할거에요.
-			//2번째꺼가 뭐냐면 이름이에요.x	
-			Student[]
-
+		ArrayList<Student> students = new ArrayList<Student>();
+		
+		for(String line:lines) {
+			String studentName = line.split(",")[1].trim();
+			Student newStudent = new Student(studentName);
+			if(!studentExist(students,newStudent))
+				students.add(newStudent);
 		}
-		return null;
+		
+		return students;
 	}
 
 	/**
@@ -74,10 +75,12 @@ public class HGUCoursePatternAnalyzer {
 	 * @param student
 	 * @return boolean
 	 */
-	private boolean studentExist(Student[] students, Student student) {
+	private boolean studentExist(ArrayList<Student> students, Student student) {
 		
-		// TODO: implement this method
-		for()
+		for(Student aStudent:students) {
+			if(aStudent != null && aStudent.getName().equals(student.getName()))
+				return true;
+		}
 
 		return false;
 	}
@@ -87,16 +90,19 @@ public class HGUCoursePatternAnalyzer {
 	 * @param lines
 	 * @return
 	 */
-	private Course[] initiateCourseArrayFromLines(String[] lines) {
+	private ArrayList<Course> initiateCourseArrayFromLines(String[] lines) {
 		
-		// TODO: implement this method
-		//while문을 돌려주세요(무한루프) 
-		//지금 들어오는 이름이랑 기존에 있던 이름이 같으면 배열에 넣지말고
-		//지금 들어오는 이름이랑 기존에 있던 이름이 다르면 배열에 넣어줘요
-		//어떻게??
-		//...
+		ArrayList<Course> courses = new ArrayList<Course>();
 		
-		return null;
+		int count = 0;
+		for(String line:lines) {
+			String courseName = line.split(",")[2].trim();
+			Course newCourse = new Course(courseName);
+			if(!courseExist(courses,newCourse))
+				courses.add(newCourse);
+		}
+		
+		return courses;
 	}
 
 	/**
@@ -105,11 +111,13 @@ public class HGUCoursePatternAnalyzer {
 	 * @param course
 	 * @return boolean
 	 */
-	private boolean courseExist(Course[] courses, Course course) {
+	private boolean courseExist(ArrayList<Course> courses, Course course) {
 		
-		// TODO: implement this method
+		for(Course aCourse:courses) {
+			if(aCourse != null && aCourse.getCourseName().equals(course.getCourseName()))
+				return true;
+		}
 
 		return false;
 	}
-
 }
