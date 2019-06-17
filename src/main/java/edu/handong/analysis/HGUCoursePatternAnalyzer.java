@@ -43,6 +43,7 @@ public class HGUCoursePatternAnalyzer {
 		}
 		
 		courses = initiateCourseArrayFromLines(lines);
+		
 		System.out.println("Number of All Courses: " + numOfCourses);
 		for(Course course: courses) {
 			System.out.println(course.getCourseName());
